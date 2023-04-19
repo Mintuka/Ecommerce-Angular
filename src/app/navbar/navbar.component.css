@@ -1,0 +1,24 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    text-align: center;
+    padding: 1px;
+}
+
+.nav_container_1, .nav_container_2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav_container_1 {
+    width: 40%;
+}
+
+.nav_container_2{
+    width: 20%;
+}
+
+h1,h3 {
+    color: white;
+}
