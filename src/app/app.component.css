@@ -1,0 +1,11 @@
+.items-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    border: 1px solid orange;
+}
+
+.item {
+    margin: 1rem;
+    width: 20%;
+}

@@ -2,13 +2,13 @@ nav {
     display: flex;
     justify-content: space-between;
     background-color: black;
-    text-align: center;
-    padding: 1px;
+    height: 10vh;
 }
 
 .nav_container_1, .nav_container_2 {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .nav_container_1 {
@@ -17,8 +17,27 @@ nav {
 
 .nav_container_2{
     width: 20%;
+    margin-right: 1rem;
 }
 
-h1,h3 {
+h3,h4 {
     color: white;
+}
+
+h4 {
+    text-align: center;
+    width: 25%;
+}
+
+h4:hover{
+    background: orange;
+    padding: 1rem 0rem
+}
+
+h4:active {
+    border-bottom: 1px solid wheat;
+}
+h1{
+    color: orange;
+    margin-left: 1rem;
 }
