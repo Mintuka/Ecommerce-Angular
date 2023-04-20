@@ -21,7 +21,7 @@ table {
   }
 
   tr {
-    height: 16vh;
+    height: 6vh;
   }
   
   tr:nth-child(even) {
@@ -41,4 +41,20 @@ table {
     align-items: center;
     width: 50%;
     margin: auto 25%;
+  }
+
+  .edit {
+    border: none;
+    background: none;
+    color: blue;
+    border-right: 1px solid rgb(189, 181, 181);
+    padding-right: 1rem;
+    cursor: pointer;
+  }
+
+  .remove {
+    border: none;
+    background: none;
+    color: red;
+    cursor: pointer;
   }

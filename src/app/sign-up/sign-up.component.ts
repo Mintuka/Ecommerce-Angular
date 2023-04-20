@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { SignUpService } from 'src/services/sign-up.service';
 import { UserData } from '../../types/UserData';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -9,11 +9,11 @@ import { UserData } from '../../types/UserData';
 })
 export class SignUpComponent {
 
-  constructor(private signUpService: SignUpService){
+  constructor(private auth: AuthService){
 
   }
 
-  Submit(values: UserData){
-    this.signUpService.createUser(values)
+  Submit(userData: UserData){
+    this.auth.createUser(userData)
   }
 }

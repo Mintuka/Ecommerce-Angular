@@ -1,21 +1,19 @@
+<app-navbar></app-navbar>
+
 <div>
     <div class="top-container">
-        <h2>Total number of items in cart is {{ items.length }}</h2>
+        <h2> {{ items.length }} available items in the store</h2>
         <button>Add</button>
     </div>
     
     <table>
         <tr>
-          <th>Picture</th>
           <th>Product</th>
           <th>Amount</th>
           <th>Price</th>
           <th>Order</th>
         </tr>
         <tr *ngFor="let item of items">
-          <td class="img-container" >
-            <img [src]="item.image" alt="item">
-          </td>
           <td>
             {{ item.name }}
           </td>
@@ -27,10 +25,12 @@
           </td>
           <td>
             <div class="order-container">
-              <button>Edit</button>
-              <button>Remove</button>
+              <button class="edit">Edit</button>
+              <button class="remove">Remove</button>
             </div>
           </td>
         </tr>
       </table>
 </div>
+
+<app-footer></app-footer>

@@ -12,7 +12,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
-import { SignUpService } from 'src/services/sign-up.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,7 @@ import { SignUpService } from 'src/services/sign-up.service';
     FormsModule
   ],
   providers: [
-    SignUpService,
+    AuthService,
   ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { SignInService } from 'src/services/sign-in.service';
 import { UserCredentials } from 'src/types/UserCredentials';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -9,11 +9,11 @@ import { UserCredentials } from 'src/types/UserCredentials';
 })
 export class SignInComponent {
 
-  constructor (private signInService: SignInService) {
+  constructor (private auth: AuthService) {
 
   }
 
-  Submit(values: UserCredentials){
-    this.signInService.logInUser(values)
+  Submit(userCredentials: UserCredentials){
+    this.auth.logInUser(userCredentials)
   }
 }

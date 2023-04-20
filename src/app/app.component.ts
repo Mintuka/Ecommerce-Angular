@@ -7,5 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'practice';
-
+  /*
+    as application starts check local storage to check loged in or not.
+    => here global state probably observable is helpful
+  */
 }
