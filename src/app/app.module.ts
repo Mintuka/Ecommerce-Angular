@@ -11,6 +11,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FooterComponent } from './footer/footer.component';
+import { FormsModule } from '@angular/forms';
+import { SignUpService } from 'src/services/sign-up.service';
 
 @NgModule({
   declarations: [
@@ -26,9 +28,12 @@ import { FooterComponent } from './footer/footer.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    SignUpService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

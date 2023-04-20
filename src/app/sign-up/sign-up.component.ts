@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SignUpService } from 'src/services/sign-up.service';
+import { UserData } from '../../types/UserData';
 
 @Component({
   selector: 'app-sign-up',
@@ -7,4 +9,11 @@ import { Component } from '@angular/core';
 })
 export class SignUpComponent {
 
+  constructor(private signUpService: SignUpService){
+
+  }
+
+  Submit(values: UserData){
+    this.signUpService.createUser(values)
+  }
 }
