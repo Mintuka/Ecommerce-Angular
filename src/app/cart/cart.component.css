@@ -1,0 +1,39 @@
+h2 {
+    margin: auto 5%;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 90%;
+    margin: 5%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    width: 15%;
+  }
+
+  tr {
+    height: 16vh;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+  img {
+    width: 15vh;
+    height: 15vh;
+    border-radius: 100%;
+    margin: 0.5vh auto;
+  }
+
+  .order-container, .amount-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50%;
+    margin: auto 25%;
+  }

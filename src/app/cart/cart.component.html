@@ -1,41 +1,37 @@
 <div>
-    <p>Total number of items is {{ items }}</p>
+    <h2>Total number of items in cart is {{ items.length }}</h2>
     
     <table>
         <tr>
-          <th>Company</th>
-          <th>Contact</th>
-          <th>Country</th>
+          <th>Picture</th>
+          <th>Product</th>
+          <th>Amount</th>
+          <th>Price</th>
+          <th>Order</th>
         </tr>
-        <tr>
-          <td>Alfreds Futterkiste</td>
-          <td>Maria Anders</td>
-          <td>Germany</td>
-        </tr>
-        <tr>
-          <td>Centro comercial Moctezuma</td>
-          <td>Francisco Chang</td>
-          <td>Mexico</td>
-        </tr>
-        <tr>
-          <td>Ernst Handel</td>
-          <td>Roland Mendel</td>
-          <td>Austria</td>
-        </tr>
-        <tr>
-          <td>Island Trading</td>
-          <td>Helen Bennett</td>
-          <td>UK</td>
-        </tr>
-        <tr>
-          <td>Laughing Bacchus Winecellars</td>
-          <td>Yoshi Tannamuri</td>
-          <td>Canada</td>
-        </tr>
-        <tr>
-          <td>Magazzini Alimentari Riuniti</td>
-          <td>Giovanni Rovelli</td>
-          <td>Italy</td>
+        <tr *ngFor="let item of items">
+          <td class="img-container" >
+            <img [src]="item.image" alt="item">
+          </td>
+          <td>
+            {{ item.name }}
+          </td>
+          <td >
+            <div class="amount-container">
+              <button>-</button>
+              <div>1</div>
+              <button>+</button>
+            </div>
+          </td>
+          <td>
+            {{ item.price }}            
+          </td>
+          <td>
+            <div class="order-container">
+              <button>order</button>
+              <button>cancel</button>
+            </div>
+          </td>
         </tr>
       </table>
 </div>
