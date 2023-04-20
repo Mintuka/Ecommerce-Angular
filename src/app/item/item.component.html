@@ -1,6 +1,9 @@
-<div class="container">
-    <img [src]="image" alt="item"/>
-    <h4> {{ name }} </h4>
-    <p> $ {{ price }} </p>
-    <button>Add to Cart</button>
+<div class="items-container">
+    <div class="item"
+        *ngFor="let item of items">
+        <img [src]="item.image" alt="item"/>
+        <h4> {{ item.name }} </h4>
+        <p> $ {{ item.price }} </p>
+        <button>Add to Cart</button>
+    </div>
 </div>

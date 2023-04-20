@@ -2,6 +2,18 @@
     margin: 0;
 }
 
+.items-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    border: 1px solid orange;
+}
+
+.item {
+    margin: 1rem;
+    width: 20%;
+}
+
 .container {
     box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius: 2%;
