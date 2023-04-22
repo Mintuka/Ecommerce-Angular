@@ -14,6 +14,8 @@ import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ItemService } from './services/item.service';
+import { CartService } from './services/cart.service';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [
     AuthService,
+    ItemService,
+    CartService
   ],
   bootstrap: [AppComponent]
 })

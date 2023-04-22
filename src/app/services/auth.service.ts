@@ -14,7 +14,6 @@ export class AuthService {
 
   async create(userData: UserData): Promise<any> {
     const { status, data } = await createUser(userData);
-    console.log(data)
     if ( status == 200 ) {
       localStorage.setItem('user', JSON.stringify(data));
       this.router.navigate(['/']);
