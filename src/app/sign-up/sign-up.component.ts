@@ -14,6 +14,6 @@ export class SignUpComponent {
   }
 
   Submit(userData: UserData){
-    this.auth.createUser(userData)
+    this.auth.create(userData)
   }
 }

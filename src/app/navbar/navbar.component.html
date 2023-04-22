@@ -1,15 +1,23 @@
 <nav>
     <h1>Merkato</h1>
-    <div class="nav_container_1">
+    <div class="nav_container_home">
         <h4>Home</h4>
         <h4>electronics</h4>
         <h4>books</h4>
         <h4>machines</h4>
     </div>
-    <div class="nav_container_2">
+    <div *ngIf="!isLoggedIn()" class="nav_container_auth">
         <h3 routerLink="/cart">cart</h3>
         <h3 routerLink="/sign-in">Sign In</h3>
         <h3 routerLink="/sign-up">Sign Up</h3>
+    </div>
+    <div *ngIf="isLoggedIn()" class="nav_container_logged" >
+        <h5>{{ user.firstName }}</h5>
+        <h3 (click)="show()" id="firstChar">{{ user.firstName[0] }}</h3>
+        <div [style.display]="isVisible ? 'block' : 'none'" class="user">
+            <h5>{{ user.email }} </h5>
+            <button (click)="logOut()">Log Out</button>
+        </div>
     </div>
  </nav>
   

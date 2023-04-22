@@ -5,22 +5,41 @@ nav {
     height: 10vh;
 }
 
-.nav_container_1, .nav_container_2 {
+.nav_container_home, .nav_container_auth, .nav_container_logged {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.nav_container_1 {
+.nav_container_home {
     width: 40%;
 }
 
-.nav_container_2{
+.nav_container_auth{
     width: 20%;
     margin-right: 1rem;
 }
 
-h3,h4 {
+.nav_container_logged {
+    position: relative;
+    margin-right: 0.25rem;
+}
+
+#firstChar {
+    margin-left: 1rem;
+    border: 1px solid white;
+    padding: 0.195rem;
+    border-radius: 100%;
+}
+
+.user {
+    position: absolute;
+    top: 2.5rem;
+    color: white;
+    background: black;
+}
+
+h3,h4,h5 {
     color: white;
     cursor: pointer;
 }

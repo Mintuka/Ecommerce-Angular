@@ -1,31 +1,42 @@
 import { Injectable } from '@angular/core';
+import { createUser, logInUser } from 'src/api/user/user';
 import { UserCredentials } from 'src/types/UserCredentials';
 import { UserData } from 'src/types/UserData';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private url = 'http://localhost:5000/api/v1/'
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  createUser (userData: UserData) {
-    /*
-      if user created
-        top right corner is changed to user firstname and dropdown
-        show loading icon
-        save token locally
-        redirected to home page
-      else
-        redirected to create with can't create modal
-    */
+  async create(userData: UserData): Promise<any> {
+    const { status, data } = await createUser(userData);
+    console.log(data)
+    if ( status == 200 ) {
+      localStorage.setItem('user', JSON.stringify(data));
+      this.router.navigate(['/']);
+    } else {
+      //notify user he/she used incorrect password/email
+    }
   }
 
-  logInUser (userCredentials: UserCredentials) {
-    //same as sign up
+
+  async logIn(userCredentials: UserCredentials): Promise<any> {
+    const { status, data } = await logInUser(userCredentials);
+    if ( status == 200 ) {
+      localStorage.setItem('user', JSON.stringify(data));
+      this.router.navigate(['/']);
+    } else {
+      //notify user he/she used incorrect password/email
+    }
   }
 
   logOut () {
-    //delete the token and redirect to home
+    localStorage.removeItem('user');
+    //log out loading
+    this.router.navigate(['/']);
   }
 }

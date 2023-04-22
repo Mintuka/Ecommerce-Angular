@@ -14,6 +14,6 @@ export class SignInComponent {
   }
 
   Submit(userCredentials: UserCredentials){
-    this.auth.logInUser(userCredentials)
+    this.auth.logIn(userCredentials)
   }
 }
