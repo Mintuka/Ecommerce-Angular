@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CartService } from '../services/cart.service';
+import { ItemService } from '../services/item.service';
 
 @Component({
   selector: 'app-item',
@@ -7,16 +9,20 @@ import { Component } from '@angular/core';
 })
 
 export class ItemComponent {
-  items = [
-    { image:'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFjYm9vayUyMHByb3xlbnwwfHwwfHw%3D&w=1000&q=80', name:'Mac Book', price:'1200' },
-    { image:'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFjYm9vayUyMHByb3xlbnwwfHwwfHw%3D&w=1000&q=80', name:'Mac Book', price:'1200' },
-    { image:'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFjYm9vayUyMHByb3xlbnwwfHwwfHw%3D&w=1000&q=80', name:'Mac Book', price:'1200' },
-    { image:'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFjYm9vayUyMHByb3xlbnwwfHwwfHw%3D&w=1000&q=80', name:'Mac Book', price:'1200' },
-    { image:'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFjYm9vayUyMHByb3xlbnwwfHwwfHw%3D&w=1000&q=80', name:'Mac Book', price:'1200' },
-    { image:'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFjYm9vayUyMHByb3xlbnwwfHwwfHw%3D&w=1000&q=80', name:'Mac Book', price:'1200' },
-    { image:'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFjYm9vayUyMHByb3xlbnwwfHwwfHw%3D&w=1000&q=80', name:'Mac Book', price:'1200' },
-    { image:'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFjYm9vayUyMHByb3xlbnwwfHwwfHw%3D&w=1000&q=80', name:'Mac Book', price:'1200' },
-    { image:'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFjYm9vayUyMHByb3xlbnwwfHwwfHw%3D&w=1000&q=80', name:'Mac Book', price:'1200' },
-    { image:'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFjYm9vayUyMHByb3xlbnwwfHwwfHw%3D&w=1000&q=80', name:'Mac Book', price:'1200' },
-  ]
+  items:any;
+  constructor (private itemService: ItemService, private cartService: CartService) {
+    this.itemService.items().subscribe(response => {
+      const { data, status } = response;
+      this.items = data
+    })
+  }
+
+  addToCart ( itemData: any ) {
+    const { _id } = itemData
+    this.cartService.addToCart( {
+                                  items: [{
+                                    id: _id, 
+                                    amount: 1}]
+                                } )
+    }
 }
