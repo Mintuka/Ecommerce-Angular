@@ -1,13 +1,10 @@
 <nav>
     <h1>Merkato</h1>
     <div class="nav_container_home">
-        <h4>Home</h4>
-        <h4>electronics</h4>
-        <h4>books</h4>
-        <h4>machines</h4>
+        <h4 routerLink="/" (click)="changeHomeColor()" [style.color]="homeColor">Home</h4>
+        <h4 routerLink="/cart" (click)="changeCartColor()" [style.color]="cartColor">Cart</h4>
     </div>
     <div *ngIf="!isLoggedIn()" class="nav_container_auth">
-        <h3 routerLink="/cart">cart</h3>
         <h3 routerLink="/sign-in">Sign In</h3>
         <h3 routerLink="/sign-up">Sign Up</h3>
     </div>
@@ -15,8 +12,8 @@
         <h5>{{ user.firstName }}</h5>
         <h3 (click)="show()" id="firstChar">{{ user.firstName[0] }}</h3>
         <div [style.display]="isVisible ? 'block' : 'none'" class="user">
-            <h5>{{ user.email }} </h5>
-            <button (click)="logOut()">Log Out</button>
+            <h5 id="email">{{ user.email }} </h5>
+            <button id="log_out" (click)="logOut()">Log Out</button>
         </div>
     </div>
  </nav>

@@ -7,12 +7,12 @@ nav {
 
 .nav_container_home, .nav_container_auth, .nav_container_logged {
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
 .nav_container_home {
     width: 40%;
+    margin-left: 1rem;
 }
 
 .nav_container_auth{
@@ -22,19 +22,22 @@ nav {
 
 .nav_container_logged {
     position: relative;
-    margin-right: 0.25rem;
 }
 
 #firstChar {
     margin-left: 1rem;
+    margin-right: 1rem;
     border: 1px solid white;
-    padding: 0.195rem;
     border-radius: 100%;
+    padding: 0.2rem 0.5rem;
 }
 
 .user {
     position: absolute;
-    top: 2.5rem;
+    top: 3.5rem;
+    right: 0.25rem;
+    padding: 1rem;
+    align-items: center;
     color: white;
     background: black;
 }
@@ -50,7 +53,7 @@ h4 {
 }
 
 h4:hover{
-    background: orange;
+    background: #727271;
     padding: 1rem 0rem
 }
 
@@ -60,4 +63,14 @@ h4:active {
 h1{
     color: orange;
     margin-left: 1rem;
+}
+
+#email {
+    margin: 1rem 2.5%;
+    width: 95%;
+}
+
+#log_out {
+    margin: 2.5%;
+    width: 95%;
 }

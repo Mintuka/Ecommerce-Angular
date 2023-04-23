@@ -1,8 +1,35 @@
 footer {
-    background: black;
-    margin-bottom: 0;
-}
-
-div {
-    color: white;
-}
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    height: 25vh;
+  }
+  
+  footer div {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  footer ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+  }
+  
+  footer li {
+    margin-right: 10px;
+  }
+  
+  footer a {
+    color: #fff;
+  }
+  
+  footer h4 {
+    margin-top: 0;
+  }
+  
+  footer div:last-child {
+    text-align: center;
+    margin-top: 20px;
+  }
+  

@@ -7,11 +7,13 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
     border: 1px solid orange;
+    min-height: 65vh;
 }
 
 .item {
     margin: 1rem;
     width: 20%;
+    height: 50%;
 }
 
 .container {
@@ -24,7 +26,7 @@ img {
 }
 
 h4,p,button {
-    margin: 0.5rem;
+    margin: 2.5%;
 }
 
 button {
@@ -36,4 +38,15 @@ button {
     background: orange;
     border-radius: 5%;
     cursor: pointer;
+}
+
+@media (max-width:700px) {
+    button {
+        padding: 0.35rem;
+    }
+}
+@media (max-width:500px) {
+    button {
+        padding: 0.2rem 0;
+    }
 }
