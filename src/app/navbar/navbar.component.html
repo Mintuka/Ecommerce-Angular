@@ -3,10 +3,11 @@
     <div class="nav_container_home">
         <h4 routerLink="/" (click)="changeHomeColor()" [style.color]="homeColor">Home</h4>
         <h4 routerLink="/cart" (click)="changeCartColor()" [style.color]="cartColor">Cart</h4>
+        <h4 *ngIf="isLoggedIn() && user.email === 'mintesnot@gmail.com'" routerLink="/admin" (click)="changeAdminColor()" [style.color]="adminColor">Admin</h4>
     </div>
     <div *ngIf="!isLoggedIn()" class="nav_container_auth">
-        <h3 routerLink="/sign-in">Sign In</h3>
-        <h3 routerLink="/sign-up">Sign Up</h3>
+        <h3 id="sign-in" routerLink="/sign-in">Sign In</h3>
+        <h3 id="sign-up" routerLink="/sign-up">Sign Up</h3>
     </div>
     <div *ngIf="isLoggedIn()" class="nav_container_logged" >
         <h5>{{ user.firstName }}</h5>

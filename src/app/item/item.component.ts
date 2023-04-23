@@ -9,20 +9,19 @@ import { ItemService } from '../services/item.service';
 })
 
 export class ItemComponent {
+
+  isClicked:any = [];
   items:any;
   constructor (private itemService: ItemService, private cartService: CartService) {
     this.itemService.items().subscribe(response => {
-      const { data, status } = response;
+      const { data } = response;
       this.items = data
     })
   }
 
   addToCart ( itemData: any ) {
     const { _id } = itemData
-    this.cartService.addToCart( {
-                                  items: [{
-                                    id: _id, 
-                                    amount: 1}]
-                                } )
+    this.cartService.addToCart( { itemId: _id, isAdd: true } )
+    this.isClicked.push(_id)
     }
 }

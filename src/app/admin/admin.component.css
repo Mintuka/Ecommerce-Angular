@@ -1,23 +1,27 @@
+.container {
+  min-height: 65vh;
+}
+
 .top-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: auto 5%;
-
+    margin: auto 12.5%;
 }
 
 
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 90%;
-    margin: auto 5%;
+    width: 75%;
+    border: 1px solid black;
+    margin: auto 12.5%;
   }
   
   td, th {
     border: 1px solid #dddddd;
     text-align: center;
-    width: 15%;
+    width: 10%;
   }
 
   tr {
@@ -33,6 +37,10 @@ table {
     height: 15vh;
     border-radius: 100%;
     margin: 0.5vh auto;
+  }
+
+  .no-items {
+    margin: 10% 38%;
   }
 
   .order-container, .amount-container {
@@ -56,5 +64,21 @@ table {
     border: none;
     background: none;
     color: red;
+    cursor: pointer;
+  }
+
+  img {
+    width: 15vh;
+    height: 15vh;
+    border-radius: 100%;
+    margin: 0.5vh auto;
+  }
+
+  .add {
+    background: orange;
+    color: white;
+    border: none;
+    width: 9%;
+    padding: 0.5rem 0;
     cursor: pointer;
   }

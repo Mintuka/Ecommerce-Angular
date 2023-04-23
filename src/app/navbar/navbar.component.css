@@ -15,9 +15,14 @@ nav {
     margin-left: 1rem;
 }
 
-.nav_container_auth{
+.nav_container_auth {
+    display: flex;
     width: 20%;
-    margin-right: 1rem;
+    justify-content: flex-end;
+}
+
+#sign-in, #sign-up {
+    margin: 1rem;
 }
 
 .nav_container_logged {

@@ -14,10 +14,11 @@ export class AuthService {
 
   async create(userData: UserData): Promise<any> {
     const { status, data } = await createUser(userData);
-    if ( status == 200 ) {
+    if ( status == 201 ) {
       localStorage.setItem('user', JSON.stringify(data));
       this.router.navigate(['/']);
     } else {
+      console.log('errrrr')
       //notify user he/she used incorrect password/email
     }
   }

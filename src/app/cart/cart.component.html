@@ -1,37 +1,44 @@
 <app-navbar></app-navbar>
 
-<div>
-    <h2>Total number of items in cart is {{ items.length }}</h2>
+<div class="container">
+    <h1 class="no-items"  *ngIf="items.length == 0">
+      No items in cart
+    </h1>
     
-    <table>
+    <h2  *ngIf="items.length > 0">
+      <span style="color: green;">
+        {{ items.length }}
+      </span>
+        items in your Cart
+    </h2>
+
+    <table [style.display]="items.length > 0 ? 'block' : 'none'">
         <tr>
           <th>Picture</th>
           <th>Product</th>
-          <th>Amount</th>
+          <!-- <th>Amount</th> -->
           <th>Price</th>
           <th>Order</th>
         </tr>
         <tr *ngFor="let item of items">
           <td class="img-container" >
-            <img [src]="item.image" alt="item">
+            <img [src]="item[0]" alt="item">
           </td>
           <td>
-            {{ item.name }}
+            {{ item[1] }}
           </td>
-          <td >
+          <!-- <td >
             <div class="amount-container">
-              <button>-</button>
-              <div>1</div>
-              <button>+</button>
+                <input type="text" class="order_amount" (change)="addAmount($event, item)" placeholder="1">
             </div>
-          </td>
+          </td> -->
           <td>
-            {{ item.price }}            
+            {{ item[2] * item[3] }}            
           </td>
           <td>
             <div class="order-container">
-              <button>order</button>
-              <button>cancel</button>
+              <button (click)="order(item)">order</button>
+              <button (click)="cancel(item)">cancel</button>
             </div>
           </td>
         </tr>

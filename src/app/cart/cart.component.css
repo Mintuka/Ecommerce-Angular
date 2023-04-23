@@ -1,12 +1,21 @@
+.container {
+  min-height: 65vh;
+}
+
 h2 {
-    margin: auto 5%;
+    text-align: center;
+    /* margin: auto 30%; */
+}
+
+.no-items {
+  margin: 10% 38%;
 }
 
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 90%;
-    margin: 5%;
+    width: 60%;
+    margin: 2% 20%;
   }
   
   td, th {
@@ -36,4 +45,10 @@ table {
     align-items: center;
     width: 50%;
     margin: auto 25%;
+  }
+
+  .order_amount {
+    text-align: center;
+    border: 1px solid black;
+    outline: none;
   }

@@ -11,6 +11,7 @@ export class NavbarComponent {
   isVisible = false;
   homeColor = 'yellow'
   cartColor = 'white'
+  adminColor = 'White'
   user: any;
   constructor (private auth: AuthService, private router: Router) {
     if ( localStorage.getItem('user') !== null )
@@ -21,19 +22,30 @@ export class NavbarComponent {
     if ( path && path[path.length-1] === 'cart' ) {
       this.homeColor = 'white'
       this.cartColor = 'yellow'
+      this.adminColor = 'white'
+    } else if ( path && path[path.length-1] === 'admin' ) {
+      this.homeColor = 'white'
+      this.cartColor = 'white'
+      this.adminColor = 'yellow'
     }
   }
 
   changeHomeColor () {
-    console.log('hello home')
     this.homeColor = 'yellow'
     this.cartColor = 'white'
+    this.adminColor = 'white'
   }
 
   changeCartColor () {
-    console.log('hello cart')
     this.cartColor = 'yellow'
     this.homeColor = 'white'
+    this.adminColor = 'white'
+  }
+
+  changeAdminColor () {
+    this.cartColor = 'white'
+    this.homeColor = 'white'
+    this.adminColor = 'yellow'
   }
 
   isLoggedIn = () => {

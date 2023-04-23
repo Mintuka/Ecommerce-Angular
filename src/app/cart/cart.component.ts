@@ -1,21 +1,46 @@
 import { Component } from '@angular/core';
+import { CartService } from '../services/cart.service';
+import { ItemService } from '../services/item.service';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
+
 export class CartComponent {
-  items = [
-    { image:'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFjYm9vayUyMHByb3xlbnwwfHwwfHw%3D&w=1000&q=80', name:'Mac Book', price:'1200' },
-    { image:'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFjYm9vayUyMHByb3xlbnwwfHwwfHw%3D&w=1000&q=80', name:'Mac Book', price:'1200' },
-    { image:'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFjYm9vayUyMHByb3xlbnwwfHwwfHw%3D&w=1000&q=80', name:'Mac Book', price:'1200' },
-    { image:'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFjYm9vayUyMHByb3xlbnwwfHwwfHw%3D&w=1000&q=80', name:'Mac Book', price:'1200' },
-    { image:'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFjYm9vayUyMHByb3xlbnwwfHwwfHw%3D&w=1000&q=80', name:'Mac Book', price:'1200' },
-    { image:'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFjYm9vayUyMHByb3xlbnwwfHwwfHw%3D&w=1000&q=80', name:'Mac Book', price:'1200' },
-    { image:'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFjYm9vayUyMHByb3xlbnwwfHwwfHw%3D&w=1000&q=80', name:'Mac Book', price:'1200' },
-    { image:'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFjYm9vayUyMHByb3xlbnwwfHwwfHw%3D&w=1000&q=80', name:'Mac Book', price:'1200' },
-    { image:'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFjYm9vayUyMHByb3xlbnwwfHwwfHw%3D&w=1000&q=80', name:'Mac Book', price:'1200' },
-    { image:'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFjYm9vayUyMHByb3xlbnwwfHwwfHw%3D&w=1000&q=80', name:'Mac Book', price:'1200' },
-  ]
+  items:any = [];
+  constructor(private itemService: ItemService, private cartService: CartService){
+    this.cartService.getCart().subscribe(response => {
+      const { data } = response;
+      for ( const item of data.cartItems ) {
+        this.items.push([item.image, item.name, item.price, 1, item._id])
+      }
+    })
+  }
+
+  addAmount (event: any, item:any) {
+    this.items.map( ( itemData:any ) => {
+      let updated = [...itemData]
+      if ( item[4] === itemData[4] ) {
+        updated[3] = parseInt(event.target.value,10)
+      }
+      console.log(updated)
+      return updated
+    })
+  }
+
+  cancel (item:any) {
+    this.cartService.addToCart({ itemId:item[4], isAdd:false })
+    this.items = this.items.filter( (itemData:any) => itemData[4] !== item[4] )
+  }
+
+  order (item:any) {
+    console.log('items',this.items)
+    const updatedItem = { image:item[0], name:item[1], price:item[2], amount:item[3], isAdd:false }
+    console.log(updatedItem)
+    this.itemService.orderItem(updatedItem, item[4])
+    this.cartService.addToCart({ itemId:item[4], isAdd:false })
+    this.items = this.items.filter( (itemData:any) => itemData[4] !== item[4] )
+  }
 }

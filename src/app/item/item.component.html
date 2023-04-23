@@ -1,12 +1,20 @@
 <app-navbar></app-navbar>
 
+<h1 class="no-items" *ngIf="items.length == 0">
+    No items available
+</h1>
+
 <div class="items-container">
     <div class="item container"
         *ngFor="let item of items">
         <img [src]="item.image" alt="item"/>
         <h4> {{ item.name }} </h4>
         <p> $ {{ item.price }} </p>
-        <button (click)="addToCart(item)">Add to Cart</button>
+        <button (click)="addToCart(item)" 
+                [style.background]="isClicked.includes(item._id) ? 'green' : 'orange'"
+                [innerHTML]="isClicked.includes(item._id) ? 'Added' : 'Add to Cart'">
+                Add to Cart
+        </button>
     </div>
 </div>
 

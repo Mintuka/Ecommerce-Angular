@@ -23,3 +23,13 @@ export const addItem = (newItem: Object) => authAxios.post(url+'item', newItem)
                             .catch(error => {
                                 return {data: error.response.data, status: error.response.status}
                             })
+
+export const updateItem = (item: Object, id:string) => authAxios.put(url+`item/${id}`, item)
+                            .catch(error => {
+                                return {data: error.response.data, status: error.response.status}
+                            })
+
+export const deleteItem = (id:string) => authAxios.delete(url+`item/${id}`)
+                            .catch(error => {
+                                return {data: error.response.data, status: error.response.status}
+                            })

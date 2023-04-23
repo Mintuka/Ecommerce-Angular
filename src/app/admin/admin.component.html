@@ -1,13 +1,25 @@
 <app-navbar></app-navbar>
 
-<div>
-    <div class="top-container">
-        <h2> {{ items.length }} available items in the store</h2>
-        <button>Add</button>
+<div class="container">
+
+    <div  *ngIf="items.length == 0">
+      <h1 class="no-items">
+        No items in the store
+      </h1>
+      <button class="add" style="margin: 0% 44%;">Add</button>
+    </div>
+
+
+    <div class="top-container" [style.display]="items.length > 0 ? 'flex' : 'none'">
+        <h2> <span style="color: green;">
+          {{ items.length }}</span> items in the store
+        </h2>
+        <button class="add">Add</button>
     </div>
     
-    <table>
+    <table [style.display]="items.length > 0 ? 'block' : 'none'">
         <tr>
+          <th>Image</th>
           <th>Product</th>
           <th>Amount</th>
           <th>Price</th>
@@ -15,10 +27,13 @@
         </tr>
         <tr *ngFor="let item of items">
           <td>
+            <img [src]="item.image" alt="item_image">
+          </td>
+          <td>
             {{ item.name }}
           </td>
           <td >
-            11
+            {{ item.amount }}
           </td>
           <td>
             {{ item.price }}            
@@ -26,7 +41,7 @@
           <td>
             <div class="order-container">
               <button class="edit">Edit</button>
-              <button class="remove">Remove</button>
+              <button class="remove" (click)="remove(item._id)">Remove</button>
             </div>
           </td>
         </tr>

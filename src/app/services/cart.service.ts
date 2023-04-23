@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { from } from 'rxjs';
-import { addItemToCart } from 'src/api/cart/cart';
+import { addItemToCart, getCart } from 'src/api/cart/cart';
 
 @Injectable({
   providedIn: 'root'
@@ -15,4 +15,6 @@ export class CartService {
     console.log(updated)
     return updated
   }
+
+  getCart = () => from(getCart())
 }

@@ -19,3 +19,8 @@ export const addItemToCart = (items: Object) => authAxios.put(url+'cart', items)
                             .catch(error => {
                                 return {data: error.response.data, status: error.response.status}
                             })
+
+export const getCart = () => authAxios.get(url+'cart')
+                            .catch(error => {
+                                return {data: error.response.data, status: error.response.status}
+                            })
