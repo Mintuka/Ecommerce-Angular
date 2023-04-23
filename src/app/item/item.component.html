@@ -4,7 +4,7 @@
     No items available
 </h1>
 
-<div class="items-container">
+<div class="items-container" *ngIf="items.length > 0">
     <div class="item container"
         *ngFor="let item of items">
         <img [src]="item.image" alt="item"/>

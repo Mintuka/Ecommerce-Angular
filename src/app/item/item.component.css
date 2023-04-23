@@ -1,12 +1,7 @@
-*{
-    margin: 0;
-}
-
 .items-container {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    border: 1px solid orange;
     min-height: 65vh;
 }
 
@@ -17,7 +12,8 @@
 }
 
 .no-items {
-    margin: 10% 38%;
+    margin: 10% 35%;
+    min-height: 65vh;
 }
 
 .container {

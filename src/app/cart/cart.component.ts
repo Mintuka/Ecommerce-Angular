@@ -25,7 +25,6 @@ export class CartComponent {
       if ( item[4] === itemData[4] ) {
         updated[3] = parseInt(event.target.value,10)
       }
-      console.log(updated)
       return updated
     })
   }
@@ -36,9 +35,7 @@ export class CartComponent {
   }
 
   order (item:any) {
-    console.log('items',this.items)
     const updatedItem = { image:item[0], name:item[1], price:item[2], amount:item[3], isAdd:false }
-    console.log(updatedItem)
     this.itemService.orderItem(updatedItem, item[4])
     this.cartService.addToCart({ itemId:item[4], isAdd:false })
     this.items = this.items.filter( (itemData:any) => itemData[4] !== item[4] )

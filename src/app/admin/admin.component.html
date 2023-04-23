@@ -2,11 +2,11 @@
 
 <div class="container">
 
-    <div  *ngIf="items.length == 0">
-      <h1 class="no-items">
+    <div  class="no-items" *ngIf="items.length == 0">
+      <h1>
         No items in the store
       </h1>
-      <button class="add" style="margin: 0% 44%;">Add</button>
+      <button class="add" (click)="open(content)" style="width: 40%; margin: 0% 30%; padding: 0.5rem 0;">Add</button>
     </div>
 
 
@@ -14,7 +14,7 @@
         <h2> <span style="color: green;">
           {{ items.length }}</span> items in the store
         </h2>
-        <button class="add">Add</button>
+        <button class="add" (click)="open(content)">Add</button>
     </div>
     
     <table [style.display]="items.length > 0 ? 'block' : 'none'">
@@ -40,12 +40,100 @@
           </td>
           <td>
             <div class="order-container">
-              <button class="edit">Edit</button>
+              <button class="edit" (click)="edit(item); open(updatedContent)">Edit</button>
               <button class="remove" (click)="remove(item._id)">Remove</button>
             </div>
           </td>
         </tr>
       </table>
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">New Item</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #data="ngForm" (ngSubmit)="Submit(data.value)">
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <div class="input-group">
+          <input [(ngModel)]="currentItem.name" id="name" name="name" class="form-control" >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="amount">Amount</label>
+        <div class="input-group">
+          <input [(ngModel)]="currentItem.amount" id="amount" name="amount" class="form-control" >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Price</label>
+        <div class="input-group">
+          <input [(ngModel)]="currentItem.price" id="price" name="price" class="form-control" >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="image">Image</label>
+        <div class="input-group">
+          <input [(ngModel)]="currentItem.image" name="image" class="form-control" >
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #updatedContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Update Item</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #data="ngForm" (ngSubmit)="Update(data.value, currentItem._id)">
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <div class="input-group">
+          <input [(ngModel)]="currentItem.name" id="name" name="name" class="form-control" >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="amount">Amount</label>
+        <div class="input-group">
+          <input [(ngModel)]="currentItem.amount" id="amount" name="amount" class="form-control" >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Price</label>
+        <div class="input-group">
+          <input [(ngModel)]="currentItem.price" id="price" name="price" class="form-control" >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="image">Image</label>
+        <div class="input-group">
+          <input [(ngModel)]="currentItem.image" name="image" class="form-control" >
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
 
 <app-footer></app-footer>

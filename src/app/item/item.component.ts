@@ -11,7 +11,7 @@ import { ItemService } from '../services/item.service';
 export class ItemComponent {
 
   isClicked:any = [];
-  items:any;
+  items:any = [];
   constructor (private itemService: ItemService, private cartService: CartService) {
     this.itemService.items().subscribe(response => {
       const { data } = response;

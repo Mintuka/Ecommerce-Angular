@@ -8,7 +8,8 @@ h2 {
 }
 
 .no-items {
-  margin: 10% 38%;
+  margin: 10% 35%;
+  min-height: 65vh;
 }
 
 table {
@@ -51,4 +52,18 @@ table {
     text-align: center;
     border: 1px solid black;
     outline: none;
+  }
+
+  button {
+    margin-left: 0.5rem;
+  }
+
+  .cancel {
+    color: red;
+    border: 1px solid red;
+  }
+
+  .order {
+    color: green;
+    border: 1px solid green;
   }

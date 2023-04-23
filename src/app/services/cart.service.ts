@@ -12,7 +12,6 @@ export class CartService {
 
   addToCart = ( itemData: any ) => {
     const updated = from(addItemToCart(itemData))
-    console.log(updated)
     return updated
   }
 
