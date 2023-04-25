@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { ItemService } from '../services/item.service';
 
@@ -8,13 +8,26 @@ import { ItemService } from '../services/item.service';
   styleUrls: ['./cart.component.css']
 })
 
-export class CartComponent {
+export class CartComponent implements OnInit {
   items:any = [];
   constructor(private itemService: ItemService, private cartService: CartService){
-    this.cartService.getCart().subscribe(response => {
-      const { data } = response;
-      for ( const item of data.cartItems ) {
-        this.items.push([item.image, item.name, item.price, 1, item._id])
+  }
+
+  ngOnInit(): void {
+    if ( localStorage.getItem('user') !== null ) {
+      const user: any = JSON.parse(localStorage.getItem('user') || '')   
+      console.log(user)
+  }
+    this.cartService.getCart().subscribe({
+      next: response => {
+        console.log('res',response)
+        const { data } = response;
+        for ( const item of data.cartItems ) {
+          this.items.push([item.image, item.name, item.price, 1, item._id])
+        }
+      },
+      error: err => {
+        console.log('err',err)
       }
     })
   }
